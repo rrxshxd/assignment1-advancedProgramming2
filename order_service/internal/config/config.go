@@ -2,18 +2,16 @@ package config
 
 import (
 	"os"
-	"strconv"
 )
 
 type Config struct {
-	Port        int
+	Port        string
 	DatabaseURL string
 }
 
 func LoadConfig() *Config {
-	port, _ := strconv.Atoi(getEnv("PORT", "8082"))
 	return &Config{
-		Port:        port,
+		Port:        getEnv("PORT", "8082"),
 		DatabaseURL: getEnv("DATABASE_URL", "postgres://postgres:Roshik8956@localhost:5432/orders?sslmode=disable"),
 	}
 }
