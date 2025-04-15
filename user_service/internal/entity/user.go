@@ -12,14 +12,14 @@ type User struct {
 }
 
 type Address struct {
-	ID        uint      `json:"id"`
-	UserID    uint      `json:"user_id"`
-	Street    string    `json:"street"`
-	City      string    `json:"city"`
-	State     string    `json:"state"`
-	Zip       string    `json:"zip"`
-	Country   string    `json:"country"`
-	IsDefault bool      `json:"is_default"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"updated_at"`
+	ID         uint      `json:"id"`
+	UserID     uint      `json:"user_id"`
+	Street     string    `json:"street"`
+	City       string    `json:"city"`
+	State      string    `json:"state"`
+	PostalCode string    `json:"postal_code"`
+	Country    string    `json:"country"`
+	IsDefault  bool      `json:"is_default"`
+	CreatedAt  time.Time `json:"created_at"`
+	UpdatedAt  time.Time `json:"updated_at"`
 }
