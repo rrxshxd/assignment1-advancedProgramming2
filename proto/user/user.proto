@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/rrxshxd/assignment1_advProg2/proto/user";
+
+import "google/protobuf/timestamp.proto";
+
+service UserService {
+  rpc RegisterUser(RegisterUserRequest) returns (UserResponse);
+  rpc AuthenticateUser(AuthRequest) returns (AuthResponse);
+  rpc GetUserProfile(GetUserProfileRequest) returns (UserProfile);
+}
+
+message User {
+  uint64 id = 1;
+  string email = 2;
+  string username = 3;
+  google.protobuf.Timestamp created_at = 4;
+}
+
+message RegisterUserRequest {
+  string email = 1;
+  string username = 2;
+  string password = 3;
+}
+
+message UserResponse {
+  User user = 1;
+  string token = 2;
+}
+
+message AuthRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message AuthResponse {
+  bool success = 1;
+  string token = 2;
+  uint64 user_id = 3;
+  string error_message = 4;
+}
+
+message GetUserProfileRequest {
+  uint64 user_id = 1;
+}
+
+message UserProfile {
+  uint64 id = 1;
+  string email = 2;
+  string username = 3;
+  google.protobuf.Timestamp created_at = 4;
+  repeated Address addresses = 5;
+}
+
+message Address {
+  uint64 id = 1;
+  string street = 2;
+  string city = 3;
+  string state = 4;
+  string postal_code = 5;
+  string country = 6;
+  bool is_default = 7;
+}
